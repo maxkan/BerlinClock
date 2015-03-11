@@ -45,11 +45,26 @@ public class HoursConverterTest {
     }
 
     @Test
-    public void testHalfOfEachRowOn() throws Exception {
+    public void testOneOfEachRowOn() throws Exception {
+        String convertedHours = hoursConverter.convert(new Time("06:00:00"));
+
+        assertEquals(rows("ROOO", "ROOO"), convertedHours);
+    }
+
+    @Test
+    public void testTwoOfEachRowOn() throws Exception {
         String convertedHours = hoursConverter.convert(new Time("12:00:00"));
 
         assertEquals(rows("RROO", "RROO"), convertedHours);
     }
+
+    @Test
+    public void testThreeOfEachRowOn() throws Exception {
+        String convertedHours = hoursConverter.convert(new Time("18:00:00"));
+
+        assertEquals(rows("RRRO", "RRRO"), convertedHours);
+    }
+
 
     @Test(expected = IllegalArgumentException.class)
     public void testNullTime() {
