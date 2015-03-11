@@ -38,14 +38,14 @@ public class Time {
     private void validate(String time) {
         TimeValidator timeValidator = new TimeValidator();
         if (!timeValidator.validate(time)) {
-            throw new IllegalArgumentException("Time must not be null");
+            throw new IllegalArgumentException("Invalid time format");
         }
     }
 
     private static class TimeValidator {
 
-        private static final Pattern PATTERN_24H_TIME = Pattern.compile("([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]");
-        private static final Pattern PATTERN_MIDNIGHT_TIME = Pattern.compile("24:00:[0-5][0-9]");
+        private static final Pattern PATTERN_24H_TIME = Pattern.compile("^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+        private static final Pattern PATTERN_MIDNIGHT_TIME = Pattern.compile("^24:00:[0-5][0-9]$");
 
         public boolean validate(String time) {
             if (StringUtils.isBlank(time)) {
