@@ -1,8 +1,10 @@
-package com.ubs.opsit.interviews;
+package com.ubs.opsit.interviews.clock.berlin;
 
-/**
- * Created by Max on 3/10/2015.
- */
+import com.ubs.opsit.interviews.Time;
+import com.ubs.opsit.interviews.TimeConverter;
+
+import static java.lang.System.lineSeparator;
+
 public class BerlinClockTimeConverter implements TimeConverter {
 
     private final HoursConverter hoursConverter;
@@ -19,8 +21,8 @@ public class BerlinClockTimeConverter implements TimeConverter {
     public String convertTime(String aTime) {
         Time time = new Time(aTime);
 
-        return secondsConverter.convert(time.getSeconds()) + System.lineSeparator()
-                + hoursConverter.convert(time.getHours()) + System.lineSeparator()
-                + minutesConverter.convert(time.getMinutes());
+        return secondsConverter.convert(time) + lineSeparator()
+                + hoursConverter.convert(time) + lineSeparator()
+                + minutesConverter.convert(time);
     }
 }
