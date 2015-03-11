@@ -11,12 +11,12 @@ public class HoursConverter {
     private static final int FIVE_HOURS_PER_BULB = 5;
     private static final int EACH_BULB_IS_SIGNIFICANT = 1;
 
-    private UnitsToBulbRowConverter topRowUnitConverter;
-    private UnitsToBulbRowConverter bottomRowUnitConverter;
+    private UnitsToBulbRowConverter topRow;
+    private UnitsToBulbRowConverter bottomRow;
 
     public HoursConverter() {
-        topRowUnitConverter = new UnitsToBulbRowConverter(FOUR_BULBS, FIVE_HOURS_PER_BULB, EACH_BULB_IS_SIGNIFICANT);
-        bottomRowUnitConverter = new UnitsToBulbRowConverter(FOUR_BULBS, ONE_HOUR_PER_BULB, EACH_BULB_IS_SIGNIFICANT);
+        topRow = new UnitsToBulbRowConverter(FOUR_BULBS, FIVE_HOURS_PER_BULB, EACH_BULB_IS_SIGNIFICANT);
+        bottomRow = new UnitsToBulbRowConverter(FOUR_BULBS, ONE_HOUR_PER_BULB, EACH_BULB_IS_SIGNIFICANT);
     }
 
     public String convert(Time time) {
@@ -28,7 +28,6 @@ public class HoursConverter {
         int hoursForTheBottomRow = hourOfDay % FIVE_HOURS_PER_BULB;
         int hoursForTheTopRow = hourOfDay - hoursForTheBottomRow;
 
-        return topRowUnitConverter.convert(hoursForTheTopRow) + lineSeparator()
-                + bottomRowUnitConverter.convert(hoursForTheBottomRow);
+        return topRow.convert(hoursForTheTopRow) + lineSeparator() + bottomRow.convert(hoursForTheBottomRow);
     }
 }

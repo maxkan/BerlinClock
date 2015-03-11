@@ -12,12 +12,12 @@ public class MinutesConverter {
     private static final int FIVE_MIN_PER_BULB = 5;
     private static final int EACH_THIRD_IS_SIGNIFICANT = 3;
 
-    private final UnitsToBulbRowConverter topRowUnitConverter;
-    private final UnitsToBulbRowConverter bottomRowUnitConverter;
+    private final UnitsToBulbRowConverter topRow;
+    private final UnitsToBulbRowConverter bottomRow;
 
     public MinutesConverter() {
-        topRowUnitConverter = new UnitsToBulbRowConverter(ELEVEN_BULBS, FIVE_MIN_PER_BULB, EACH_THIRD_IS_SIGNIFICANT);
-        bottomRowUnitConverter = new UnitsToBulbRowConverter(FOUR_BULBS, ONE_MIN_PER_BULB);
+        topRow = new UnitsToBulbRowConverter(ELEVEN_BULBS, FIVE_MIN_PER_BULB, EACH_THIRD_IS_SIGNIFICANT);
+        bottomRow = new UnitsToBulbRowConverter(FOUR_BULBS, ONE_MIN_PER_BULB);
     }
 
     public String convert(Time time) {
@@ -29,7 +29,6 @@ public class MinutesConverter {
         int minutesForTheBottomRow = minutes % FIVE_MIN_PER_BULB;
         int minutesForTheTopRow = minutes - minutesForTheBottomRow;
 
-        return topRowUnitConverter.convert(minutesForTheTopRow) + lineSeparator()
-                + bottomRowUnitConverter.convert(minutesForTheBottomRow);
+        return topRow.convert(minutesForTheTopRow) + lineSeparator() + bottomRow.convert(minutesForTheBottomRow);
     }
 }
