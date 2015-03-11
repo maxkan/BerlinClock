@@ -31,21 +31,21 @@ public class HoursConverterTest {
     }
 
     @Test
-    public void testConvertTopRowOn() throws Exception {
+    public void testTopRowOn() throws Exception {
         String convertedHours = hoursConverter.convert(new Time("20:00:00"));
 
         assertEquals(rows("RRRR", "OOOO"), convertedHours);
     }
 
     @Test
-    public void testConvertBottomRowOn() throws Exception {
+    public void testBottomRowOn() throws Exception {
         String convertedHours = hoursConverter.convert(new Time("04:00:00"));
 
         assertEquals(rows("OOOO", "RRRR"), convertedHours);
     }
 
     @Test
-    public void testConvertHalfOn() throws Exception {
+    public void testHalfOfEachRowOn() throws Exception {
         String convertedHours = hoursConverter.convert(new Time("12:00:00"));
 
         assertEquals(rows("RROO", "RROO"), convertedHours);
